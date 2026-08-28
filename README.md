@@ -1,22 +1,24 @@
 # Frontend Mentor - Bento grid solution
 
+![](.reference/preview.jpg)
+
 This is a solution to the [Bento grid challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/bento-grid-RMydElrlOj). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+- [Frontend Mentor - Bento grid solution](#frontend-mentor---bento-grid-solution)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
+  - [My process](#my-process)
+    - [Built with](#built-with)
+    - [What I learned](#what-i-learned)
+    - [Continued development](#continued-development)
+    - [Useful resources](#useful-resources)
+  - [Author](#author)
+  - [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -28,83 +30,89 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+<details>
+  <summary>Mobile view</summary>
+  <img src='screenshots/mobile-view.png' alt='Bento Grid challenge - Mobile view' width='375px'>
+</details>
+<details>
+  <summary>Desktop view</summary>
+  <img src='screenshots/desktop-view.png' alt='Bento Grid challenge - Desktop view'>
+</details>
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Bento Grid with Fluid clamp(), BEM & Integer CSS Grid](https://www.frontendmentor.io/solutions/test-_O5toBn4L1)
+- Live Site URL: [Frontend Mentor | Bento grid](https://challenged-by-frontend-mentor.github.io/bento-grid/)
 
 ## My process
 
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
+- CSS custom properties (Variables)
+- CSS Grid (Responsive Bento layout)
 - Flexbox
-- CSS Grid
 - Mobile-first workflow
+- BEM (Block Element Modifier) methodology
+- Modern CSS features (`clamp()`, `100dvh`, Modern Nesting)
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+Through building and refactoring this Bento Grid layout, I deepened my understanding of modern CSS architecture, Grid calculations, and fluid responsiveness:
 
-To see how you can add code snippets, see below:
+1. **BEM Naming Standard & CSS Specificity**: 
+   I learned the importance of maintaining a clean BEM architecture. By avoiding deeply nested selectors and explicitly defining top-level modifier selectors, the CSS became much easier to maintain and free of specificity conflicts.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+   ```css
+   /* Clean, explicit BEM modifier targeting */
+   .bento-card--hero .bento-card__title {
+     font-size: 2.9rem;
+     line-height: 0.92;
+   }
+   ```
+2. **Systematic Fractional Grid Ratios (`fr`)**:
+   Initially, I used decimal `fr` units (`2.4fr`) to match specific pixel values from the design. I learned that using integer-based ratios like `3fr 2fr repeat(6, 1fr)` provides a much more stable, predictable, and maintainable grid system across different browser engines without floating-point rounding issues.
+   ```css
+    .bento-grid {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 3fr 2fr repeat(6, 1fr);
+    }
+   ```
+3. **Fluid Responsiveness with `clamp()`**:
+   Instead of hardcoding a fixed `padding-top` at specific media query breakpoints (e.g., jump from 32px to 82px at 1024px), I discovered how `clamp()` smoothly interpolates values based on the viewport width (`vw`).
+   ```css
+    .page-layout {
+      /* Fluidly scales top padding between 32px and 82px based on screen width */
+      padding: clamp(32px, 5.69vw, 82px) 16px 32px;
+    }
+   ```
+4. **Modern Viewport Units & Defensive Layouts**:
+   I learned to use **100dvh** (Dynamic Viewport Height) for full-height layouts on mobile browsers to prevent scrollbar flickering caused by browser UI bars, and replaced fixed **height** with flexible content sizing to avoid text overflow.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+In upcoming projects, I plan to focus on:
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+- **Advanced CSS Layouts**: Exploring CSS Subgrid and container queries for even more flexible component designs.
+
+- **Web Accessibility (a11y)**: Improving screen-reader compatibility, keyboard navigation, and ARIA attributes for complex components.
+
+- **State & Interactivity**: Building dynamic, interactive components with React and managing UI state effectively.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Atmos RGB to HSL Converter](https://atmos.style/color-converter/rgb-to-hsl) - I used this tool to convert background colors provided in RGB into HSL format. This helped me keep all color variables consistent within `:root` CSS custom properties.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+- GitHub: [Kairung Vangmanaw](https://github.com/VangmanawKairung)
+- Frontend Mentor - [@VangmanawKairung](https://www.frontendmentor.io/profile/VangmanawKairung)
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+I would like to sincerely thank myself for staying persistent and continuing to push forward. A big thank you to the Frontend Mentor team for creating this challenge and providing the opportunity to practice and refine my skills. 
 
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+I am also grateful to Google for developing Gemini, which served as a great thought partner in helping me refactor my CSS and explore modern layout techniques. 
+
+A special thanks to macOS Preview for making it quick and easy to inspect pixel values directly from the design image—this sped up my workflow significantly compared to trial and error. Lastly, I want to express my appreciation to every tool, program, and source of encouragement that supported me throughout this process.
