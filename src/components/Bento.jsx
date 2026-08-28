@@ -26,7 +26,7 @@ export default Bento;
 
 const Hero = () => {
   return (
-    <article className="bento-card bento-card--hero">
+    <article className="bento-card bento-card--hero bento-card--purple">
       <h1 className="bento-card__title">
         Social Media <span className="bento-card__title--highlight">10x</span>{" "}
         <em>Faster</em> with AI
@@ -63,7 +63,7 @@ const FeatureAiContent = () => {
 const FeatureAudienceGrowth = () => {
   return (
     <article className="bento-card bento-card--growth-stat bento-card--white">
-      <h2 className="bento-card__title">
+      <h2 className="bento-card__stat">
         <span className="bento-card__stat-number">&gt;56%</span>
         <span className="bento-card__stat-label">faster audience growth</span>
       </h2>
